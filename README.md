@@ -159,6 +159,8 @@ use database called 'names' for initial setup
 ```
 
 /server/server.js: import Name from './models/Name.js'  
+
+/server/server.js:  
 MUST HAVE A SEMICOLON BEFORE NEXT LINE OF CODE!!!(IIFE)  
 ```js
     (async()=>{
@@ -169,7 +171,7 @@ MUST HAVE A SEMICOLON BEFORE NEXT LINE OF CODE!!!(IIFE)
             console.log(err)
         }
     })()
-    app.post('/api/names, async (req,res)=>{
+    app.post('/api/names', async (req,res)=>{
         try{
             await Name.create({
                 firstName:req.body.firstName,
@@ -192,6 +194,82 @@ Body > raw
 ```
 click: 'Send'  
 Confirm new entry on mongodb.com  
+
+server/server.js:  
+```js
+  app.delete('/api/names/:id',async(req,res)=>{
+    try{
+      await Name.findByIdAndDelete(req.params.id)
+      res.json(console.log('Deleted from Database'))
+    }catch(err){
+      console.log(err)
+    }
+  })
+```
+
+mongodb.com: copy ID# of document  
+Postman:  
+DELETE http://localhost:7071/api/names/(cmd+v/paste)  
+click: 'Send'  
+confirm entry deleted on mongodb.com  
+add 3 entries to database  
+
+server/server.js:  
+```js
+  app.get('/api/names', async(req,res=>{
+    try{
+      const allNames = await.find()
+      res.json(allNames)
+    }catch(err){
+      console.log(err)
+    }
+  }))
+```
+Postman: GET http://localhost:7071/api/names  
+click: 'Send'  
+confirm response of all names from database  
+
+server/server.js:  
+```js
+  app.get('/api/names/:id', async(req,res)=>{
+    try{
+      const name = await Name.findById(req.params.id)
+      res.json(name)
+    }catch(err){
+      console.log(err)
+    }
+  })
+```
+copy 1 id# to clipboard  
+Postman: GET http://localhost:7071/(cmd+v/paste)  
+click: 'Send'  
+confirm response of ONE entry from database  
+
+server/server.js:  
+```js
+  app.put('/api/names/:id',async(req,res)=>{
+    try{
+      await Name.findByIdAndUpdate({_id:req.params.id},{
+        firstName:req.body.firstName,
+        lastName:req.body.lastName
+      })
+      res.json('Updated in Database')
+    }catch(err){
+      console.log(err)
+    }
+  })
+```
+copy 1 id# to clipboard  
+Postman: PUT http://localhost:7071/(cmd+v/paste)  
+click: 'Send'  
+confirm entry updated in mongodb.com  
+git push  
+
+
+
+
+
+
 
 
 

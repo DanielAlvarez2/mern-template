@@ -31,5 +31,40 @@ app.post('/api/names', async(req,res)=>{
         console.log(err)
     }
 })
+app.delete('/api/names/:id',async(req,res)=>{
+    try{
+        await Name.findByIdAndDelete(req.params.id)
+        res.json('Deleted from Database')
+    }catch(err){
+        console.log(err)
+    }
+})
+app.get('/api/names',async(req,res)=>{
+    try{
+        const allNames = await Name.find()
+        res.json(allNames)
+    }catch(err){
+        console.log(err)
+    }
+})
+app.get('/api/names/:id',async(req,res)=>{
+    try{
+        const name = await Name.findById(req.params.id)
+        res.json(name)
+    }catch(err){
+        console.log(err)
+    }
+})
+app.put('/api/names/:id',async(req,res)=>{
+    try{
+        await Name.findByIdAndUpdate({_id:req.params.id},{
+            firstName:req.body.firstName,
+            lastName:req.body.lastName
+        })
+        res.json('Updated in Database')
+    }catch(err){
+        console.log(err)
+    }
+})
 app.get('/api/items',(req,res)=>res.send(items))
 setInterval(()=>fetch('https://mern-template-pj2l.onrender.com'),600000)
