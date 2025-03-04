@@ -18,17 +18,17 @@ export default function App(){
       <form>
         <label>
           First Name:
-          <input  type='text' />
+          <input id='first-name' name='firstName' type='text' />
         </label>
         <label>
           Last Name:
-          <input type='text' />
+          <input id='last-name' name='lastName' type='text' />
         </label>
         <input type='submit' />
       </form>
-      {names.map((data,i)=>{
+      {names.map(data=>{
         return(
-          <div key={i}>{data.firstName} {data.lastName} {data._id} <i className="fa-solid fa-trash-can" onClick={()=>deleteName(data._id)}></i></div>
+          <div key={data._id}>{data.firstName} {data.lastName} <i className="fa-solid fa-trash-can" onClick={()=>deleteName(data._id)}></i></div>
         )
       })}
     </>

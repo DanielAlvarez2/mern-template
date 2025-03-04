@@ -288,9 +288,9 @@ git push
         <form>
           First Name:
         </form>
-        {names.map((data,i)=>{
+        {names.map(data=>{
           return(
-            <div key={i}>{i}{data.firstName} {data.lastName} {data._id}<i className="fa-solid fa-trash-can" onClick={()=>deleteName(data._id)}></i></div>
+            <div key={data._id}>{data.firstName} {data.lastName}<i className="fa-solid fa-trash-can" onClick={()=>deleteName(data._id)}></i></div>
           )
         })}
       </>
