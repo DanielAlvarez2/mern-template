@@ -277,12 +277,20 @@ git push
         .then(json=>setNames(json))
         .catch(err=>console.log(err))
     }
-    useEffect(()=>getNames())
+    useEffect(()=>getNames(),[])
+    const deleteName = async (id)={
+      await fetch(`/api/names/${id}`,{method:'DELETE'})
+              .then(getNames())
+              .catch(err=>console.log(err))
+    }
     return(
       <>
+        <form>
+          First Name:
+        </form>
         {names.map((data,i)=>{
           return(
-            <div key={i}>{i}{data.firstName} {data.lastName}</div>
+            <div key={i}>{i}{data.firstName} {data.lastName} {data._id}<i className="fa-solid fa-trash-can" onClick={()=>deleteName(data._id)}></i></div>
           )
         })}
       </>
@@ -290,7 +298,15 @@ git push
   }
 ```
 ensure list of names is displaying in React Browser  
-git push  
+git push (READ/DELETE working)  
+Render.com dashboard: Overview > Projects  
+Click on 'SERVICE NAME'  
+MANAGE > Environment  > Environment Variables > '+ Add' > '+ New Variable'  
+.env: copy MONGODB_URI environment variable  
+Render.com: 'Key' MONGODB_URI 'Value' (cmd+v/paste) 'Save, rebuild, and deploy'   
+confirm list of names displaying online 
+index.html <head>:  
+<script src="https://kit.fontawesome.com/21ef82ed30.js" crossorigin="anonymous"></script>  
 
 
 
