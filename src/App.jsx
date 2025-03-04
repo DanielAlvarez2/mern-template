@@ -41,7 +41,7 @@ export default function App(){
           Last Name:
           <input id='last-name' name='lastName' placeholder='Smith' type='text' />
         </label>
-        <input type='submit' />
+        <input type='submit' value='+ Add Name' />
       </form>
       {names.map(data=>{
         return(
