@@ -1,23 +1,20 @@
-import { useState, useEffect } from 'react'
-export default function App() {
-  const [items, setItems] = useState([])
-  useEffect(()=>{
-    fetch('/api/items')
+import {useEffect,useState} from 'react'
+export default function App(){
+  const [names, setNames] = useState([])
+  const getNames = ()=>{
+    fetch('/api/names')
       .then(res=>res.json())
-      .then(data=>setItems(data))
-  },[])
-  function renderItems(){
-    return items.map((item,i)=>{
-      return <div key={i}>
-        <h3>{item.name}</h3>
-        <p>Price: {item.price}</p>
-      </div>
-    })
+      .then(json=>setNames(json))
+      .catch(err=>console.log(err))
   }
-  return (
-    <main>
-      <h1>EXAMPLE WEB SHOP</h1>
-      {renderItems()}
-    </main>
+  useEffect(()=>getNames())
+  return(
+    <>
+      {names.map((data,i)=>{
+        return(
+          <div key={i}>{data.firstName} {data.lastName}</div>
+        )
+      })}
+    </>
   )
 }

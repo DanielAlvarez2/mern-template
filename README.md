@@ -265,6 +265,32 @@ click: 'Send'
 confirm entry updated in mongodb.com  
 git push  
 
+## Use API 
+/src/App.jsx REPLACE ENTIRE FILE CONTENTS:
+```js
+  import {useEffect,useState} from 'react'
+  export default function App(){
+    const [names, setNames] = useState([])
+    const getNames = ()=>{
+      fetch('/api/names')
+        .then(res=>res.json())
+        .then(json=>setNames(json))
+        .catch(err=>console.log(err))
+    }
+    useEffect(()=>getNames())
+    return(
+      <>
+        {names.map((data,i)=>{
+          return(
+            <div key={i}>{i}{data.firstName} {data.lastName}</div>
+          )
+        })}
+      </>
+    )
+  }
+```
+ensure list of names is displaying in React Browser  
+git push  
 
 
 
