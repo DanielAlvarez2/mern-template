@@ -9,10 +9,11 @@ export default function App(){
   }
   const deleteName = async (id)=>{
     await fetch(`/api/names/${id}`, {method:'DELETE'})
-            .then(getNames())
+            .then(console.log('Deleted from Database'))
+            .then(async()=> await getNames())
             .catch(err=>console.log(err))
   }
-  useEffect(()=>getNames(),[])
+  useEffect(()=> getNames(),[])
   async function addName(formData){
     const firstName = formData.get('firstName')
     const lastName = formData.get('lastName')
@@ -26,6 +27,8 @@ export default function App(){
                                 })
           })
       .then(console.log('Submitted to Database'))
+      .then(async()=>await getNames())
+      .catch(err=>console.log(err))
   }
   return(
     <>
