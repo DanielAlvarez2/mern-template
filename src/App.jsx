@@ -13,9 +13,15 @@ export default function App(){
             .catch(err=>console.log(err))
   }
   useEffect(()=>getNames(),[])
+  function addName(formData){
+    const firstName = formData.get('firstName')
+    const lastName = formData.get('lastName')
+    console.log(firstName)
+    console.log(lastName)
+  }
   return(
     <>
-      <form>
+      <form action={addName}>
         <label>
           First Name:
           <input id='first-name' name='firstName' placeholder='John' type='text' />
