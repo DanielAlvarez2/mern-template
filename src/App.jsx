@@ -18,11 +18,11 @@ export default function App(){
       <form>
         <label>
           First Name:
-          <input id='first-name' name='firstName' type='text' />
+          <input id='first-name' name='firstName' placeholder='John' type='text' />
         </label>
         <label>
           Last Name:
-          <input id='last-name' name='lastName' type='text' />
+          <input id='last-name' name='lastName' placeholder='Smith' type='text' />
         </label>
         <input type='submit' />
       </form>
