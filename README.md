@@ -19,7 +19,7 @@ VS Code:
  ● JavaScript  
  $ npm i  
  package.json: ensure v19+ for react + react-dom
- $ npm i dotenv express  
+ $ npm i dotenv express mongoose  
  $ touch .env  
  .gitignore: add '.env'  
  DO NOT DELETE 'src/assets/react.svg' FILE / WILL THROW AN ERROR  
@@ -93,17 +93,19 @@ express$ cd server
 express/server$ node --watch server.js (start express before react)  
 react$ npm run dev  
 click link to open browser  
-App.jsx: modify h1 to check hot-reload working
-ctrl+c both servers
+App.jsx: modify h1 to check hot-reload working  
+ctrl+c both servers  
+
+
 /server/server.js: 
 ```js
     import dotenv from 'dotenv'
     dotenv.config({path:'../.env'})
 ```  
-.env: PORT=8081 (write# down)
-.vite.config.js: change PORT to 8081
-restart both servers (express 1st)
-ensure new port# being used
+.env: PORT=8081 (write# down)  
+.vite.config.js: change PORT to 8081  
+restart both servers (express 1st)  
+ensure new port# being used  
 /package.json: "start":"cd server && node server.js"  
 Push to GitHub  
 
@@ -126,6 +128,74 @@ Render.com:
  Maximize Log Screen  
  Wait for 'Your service is live'  
  Check in 30min intervals  
+
+---
+## Create API  
+
+/server/server.js: import mongoose from 'mongoose'  
+mongodb.com login with email/password  
+click: 'Connect'  
+click: 'Drivers'  
+connection string / copy to clipboard  
+.env: MONGODB_URI=(cmd+v/paste)  
+replace <db_password> with actual password  
+between /? write name of new database / or will be set to default 'test'  
+use database called 'names' for initial setup  
+/server$ mkdir models  
+/server$ cd models  
+/server/models$ touch Name.js
+
+/server/models/Name.js:  
+```js
+    import mongoose from 'mongoose'
+    const NameSchema = new mongoose.Schema({
+        firstName:{type:String},
+        lastName:{type:String}
+
+    },{
+        timestamps:true
+    })
+    export default mongoose.model('Name', NameSchema)
+```
+
+/server/server.js: import Name from './models/Name.js'  
+MUST HAVE A SEMICOLON BEFORE NEXT LINE OF CODE!!!(IIFE)  
+```js
+    (async()=>{
+        try{
+            await mongoose.connect(process.env.MONGODB_URI)
+            console.log('Database Connected')
+        }catch(err){
+            console.log(err)
+        }
+    })()
+    app.post('/api/names, async (req,res)=>{
+        try{
+            await Name.create({
+                firstName:req.body.firstName,
+                lastName:req.body.lastName
+            })
+            res.json('Added to Database')
+        }catch(err){
+            console.log(err)
+        }
+    })
+```
+server/server.js: app.use(express.json())  
+
+Postman:  
+POST http://localhost:7071/api/names/  
+Body > raw  
+```
+  "firstName":"Daniel",
+  "lastName":"Alvarez"
+```
+click: 'Send'  
+Confirm new entry on mongodb.com  
+
+
+
+
 
 
   
