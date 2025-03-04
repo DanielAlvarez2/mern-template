@@ -13,11 +13,19 @@ export default function App(){
             .catch(err=>console.log(err))
   }
   useEffect(()=>getNames(),[])
-  function addName(formData){
+  async function addName(formData){
     const firstName = formData.get('firstName')
     const lastName = formData.get('lastName')
-    console.log(firstName)
-    console.log(lastName)
+    console.log(formData.get('firstName'))
+    console.log(formData.get('lastName'))
+    await fetch('/api/names', { method:'POST',
+                                headers:{'Content-Type':'application/json'},
+                                body: JSON.stringify({
+                                  firstName:firstName,
+                                  lastName:lastName
+                                })
+          })
+      .then(console.log('Submitted to Database'))
   }
   return(
     <>
