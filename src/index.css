@@ -33,12 +33,16 @@ input[type=submit]{
 }
 input[type=submit]{
     border:none;
-    width:110px;
+    width:125px;
     cursor:pointer;
     background:black;
     color:white;
 }
 .fa-trash-can{
     color:red;
+    cursor:pointer;
+}
+.fa-pen{
+    color:rgb(189, 189, 41);
     cursor:pointer;
 }

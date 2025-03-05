@@ -1,6 +1,8 @@
 import {useEffect,useState} from 'react'
 export default function App(){
+  const [editForm, setEditForm] = useState(false)
   const [names, setNames] = useState([])
+  const [hiddenID, setHiddenID] = useState('')
   const getNames = ()=>{
     fetch('/api/names')
       .then(res=>res.json())
@@ -15,24 +17,43 @@ export default function App(){
   }
   useEffect(()=> getNames(),[])
   async function addName(formData){
-    const firstName = formData.get('firstName')
-    const lastName = formData.get('lastName')
-    console.log(formData.get('firstName'))
-    console.log(formData.get('lastName'))
     await fetch('/api/names', { method:'POST',
                                 headers:{'Content-Type':'application/json'},
                                 body: JSON.stringify({
-                                  firstName:firstName,
-                                  lastName:lastName
+                                  firstName: formData.get('firstName'),
+                                  lastName: formData.get('lastName')
                                 })
           })
       .then(console.log('Submitted to Database'))
       .then(async()=>await getNames())
       .catch(err=>console.log(err))
   }
+  async function updateName(formData){
+    console.log(formData.get('id'))
+    console.log(formData.get('firstName'))
+    console.log(formData.get('lastName'))
+    await fetch(`/api/names/${formData.get('id')}`, { method:'PUT',
+                                headers:{'Content-Type':'application/json'},
+                                body: JSON.stringify({
+                                  firstName: formData.get('firstName'),
+                                  lastName:formData.get('lastName')
+                                })
+    })
+      .then(console.log('Name Updated'))
+      .then(setEditForm(false))
+      .then(async()=>await getNames())
+      .catch(err=>console.log(err))
+  }
+  function updateForm(id,firstName,lastName){
+    setHiddenID(id)
+    document.querySelector('#first-name').value = firstName;
+    document.querySelector('#last-name').value = lastName;
+    setEditForm(true)
+  }
   return(
     <>
-      <form action={addName}>
+      <form action={ editForm ? updateName : addName}>
+        <input type='hidden' id='id' name='id' value={hiddenID} />
         <label>
           First Name:
           <input id='first-name' name='firstName' placeholder='John' type='text' />
@@ -41,11 +62,19 @@ export default function App(){
           Last Name:
           <input id='last-name' name='lastName' placeholder='Smith' type='text' />
         </label>
-        <input type='submit' value='+ Add Name' />
+        <input  type='submit' 
+                value={ editForm ? 'Δ Update Name' : '+ Add Name'} 
+                style={ editForm ? { background:'blue'} : {background:'black'}}        
+        />
       </form>
       {names.map(data=>{
         return(
-          <div key={data._id}>{data.firstName} {data.lastName} <i className="fa-solid fa-trash-can" onClick={()=>deleteName(data._id)}></i></div>
+          <div key={data._id}>{data.firstName} {data.lastName} 
+            <i  className="fa-solid fa-trash-can" 
+                onClick={()=>deleteName(data._id)}></i>
+            <i  className="fa-solid fa-pen"
+                onClick={()=>updateForm(data._id,data.firstName,data.lastName)}></i>      
+          </div>
         )
       })}
     </>
