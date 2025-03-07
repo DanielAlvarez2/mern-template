@@ -4,7 +4,7 @@ GitHub:
  Fill in 'Repository name *'  
  [ ]Add a README file (leave unchecked)  
  Click Green Button 'Create Repository'  
- Copy URL  
+ Copy URL (https://github.com/DanielAlvarez2/reponame.git)
 
 VS Code:  
  File > New Window  
@@ -14,12 +14,12 @@ VS Code:
  Open newly created folder  
  $ git config user.name 'Daniel Alvarez'  
  $ git config user.email 'daniel.yllanes@hotmail.com'  
- $ npm create vite@ latest .  
+ $ npm create vite@ latest .  (PERIOD='in current directory')
  ● React  
  ● JavaScript  
  $ npm i  
- package.json: ensure v19+ for react + react-dom
- $ npm i dotenv express mongoose  
+ package.json: ensure v19+ for react + react-dom  
+ $ npm i express mongoose  
  $ touch .env  
  .gitignore: add '.env'  
  DO NOT DELETE 'src/assets/react.svg' FILE / WILL THROW AN ERROR  
@@ -40,7 +40,7 @@ VS Code:
  ```js
 import express from 'express'
 const app = express()
-const PORT = process.env.PORT || 8080 (write # down)
+const PORT = process.env.PORT || 8080 (write # down _ _ _ _)
 app.listen(PORT, ()=> console.log(`Server Running on Port: ${PORT}`))
 app.use(express.static('../dist'))
 const items = [
@@ -49,19 +49,21 @@ const items = [
 ]
 app.get('/api/items',(req,res)=>res.send(items))
  ```
- 
+
+
  vite.config.js:
  ```js
 export default defineConfig({
   server:{
     proxy:{
-      '/api':'http://localhost:8080'
+      '/api':'http://localhost:8080' (sub port# from above _ _ _ _)
     }
   },
   plugins: [react()],
 })
  ```
  
+
  App.jsx (REPLACE ENTIRE FILE CONTENTS): 
 ```js
 import { useState, useEffect } from 'react'
@@ -88,22 +90,15 @@ export default function App() {
   )
 }
 ```
-add another 2 bash terminals, rename 1 react / 2 express / 3 git  
+add another 2 bash terminals, rename 1 express / 2 react / 3 git  
 express$ cd server  
-express/server$ node --watch server.js (start express before react)  
+express/server$ node --watch --env-file=../.env server.js (start express before react)  
 react$ npm run dev  
 click link to open browser  
 App.jsx: modify h1 to check hot-reload working  
 ctrl+c both servers  
-
-
-/server/server.js: 
-```js
-    import dotenv from 'dotenv'
-    dotenv.config({path:'../.env'})
-```  
-.env: PORT=8081 (write# down)  
-.vite.config.js: change PORT to 8081  
+.env: PORT=8081 (current port+1 write# down _ _ _ _)  
+.vite.config.js: change PORT to 8081 (port# from above)  
 restart both servers (express 1st)  
 ensure new port# being used  
 /package.json: "start":"cd server && node server.js"  
@@ -113,7 +108,6 @@ Render.com:
  Push Button '+ New'  
  Select 'Web Service'  
  Select GitHub Repo from Dropdown Menu  
- Click Button 'Connect'  
  Free $0/month  
  Click Button 'Deploy Web Service'  
  Maximize Log Screen  
@@ -123,6 +117,7 @@ Render.com:
  Visit URL to ensure app is working online  
  /server/server.js: setInterval(()=>fetch('cmd+v/paste',600000))  
  push to github  
+ Render.com:  
  click button: 'Manual Deploy'  
  select: 'Deploy Latest Commit'  
  Maximize Log Screen  
@@ -265,7 +260,7 @@ click: 'Send'
 confirm entry updated in mongodb.com  
 git push  
 
-## Use API 
+## Connect API to React 
 /src/App.jsx REPLACE ENTIRE FILE CONTENTS:
 ```js
   import {useEffect,useState} from 'react'
