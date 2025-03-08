@@ -1,8 +1,11 @@
 import {useEffect,useState} from 'react'
+import { FaPlusCircle } from 'react-icons/fa'
+import { VscSave } from "react-icons/vsc"
 export default function App(){
   const [editForm, setEditForm] = useState(false)
   const [names, setNames] = useState([])
   const [hiddenID, setHiddenID] = useState('')
+  const [submitText, setSubmitText] = useState(<FaPlusCircle />)
   const getNames = ()=>{
     fetch('/api/names')
       .then(res=>res.json())
@@ -62,10 +65,9 @@ export default function App(){
           Last Name:
           <input id='last-name' name='lastName' placeholder='Smith' type='text' />
         </label>
-        <input  type='submit' 
-                value={ editForm ? 'Δ Save Changes' : '+ Add Name'} 
-                style={ editForm ? { background:'blue'} : {background:'black'}}        
-        />
+        <button style={ editForm ? { background:'blue'} : {background:'black',color:'white'}}>
+          {editForm ? <><VscSave /> Save Changes</> : <><FaPlusCircle /> Add Name</>}
+        </button>      
       </form>
       {names.map(data=>{
         return(

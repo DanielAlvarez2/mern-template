@@ -25,15 +25,15 @@ input[type=text]{
     border:2px solid black;
 }
 input[type=text],
-input[type=submit]{
+button{
     height:30px;
     border-radius: 5px;
     padding: 0 5px;
     font-size: 16px;
 }
-input[type=submit]{
+button{
     border:none;
-    width:125px;
+    width:135px;
     cursor:pointer;
     background:black;
     color:white;

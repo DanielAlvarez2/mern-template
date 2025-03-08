@@ -19,7 +19,7 @@ VS Code:
  ● JavaScript  
  $ npm i  
  package.json: ensure v19+ for react + react-dom  
- $ npm i express mongoose  
+ $ npm i express mongoose react-icons  
  $ touch .env  
  .gitignore: add '.env'  
  DO NOT DELETE 'src/assets/react.svg' FILE / WILL THROW AN ERROR  
