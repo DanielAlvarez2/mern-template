@@ -212,13 +212,14 @@ Postman:
 DELETE http://localhost:7071/api/names/(cmd+v/paste)  
 click: 'Send'  
 confirm entry deleted on mongodb.com  
-add 3 entries to database  
+Postman: add 3 entries to database  
 
 server/server.js:  
 ```js
   app.get('/api/names', async(req,res=>{
     try{
       const allNames = await.find()
+      console.log('All Names From Database: ___')
       res.json(allNames)
     }catch(err){
       console.log(err)
@@ -234,6 +235,7 @@ server/server.js:
   app.get('/api/names/:id', async(req,res)=>{
     try{
       const name = await Name.findById(req.params.id)
+      console.log('1 Wine from Database: ___')
       res.json(name)
     }catch(err){
       console.log(err)
