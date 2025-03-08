@@ -335,13 +335,18 @@ git push
             LastName:
             <input id='last-name' name='lastName' placeholder='Smith' type='text' />
           </label>
-          <button style={editForm ? {background:'blue',color:'black'} : {background:'black',color:'white'}}>
+          <button style={editForm ? {background:'blue'} : {background:'black'}}>
             {editForm ? <><VscSave /> Save Changes</> : <><FaPlusCircle /> Add Name</>}
           </button>
         </form>
         {names.map(data=>{
           return(
-            <div key={data._id}>{data.firstName} {data.lastName}<i className="fa-solid fa-trash-can" onClick={()=>deleteName(data._id)}></i></div>
+            <div key={data._id}>{data.firstName} {data.lastName}
+              <i  className="fa-solid fa-trash-can" 
+                  onClick={()=>deleteName(data._id)}></i>
+              <i  className='fa-solid fa-pen'
+                  onClick={()=>updateForm(data._id,data.firstName,data.lastName)}></i>
+            </div>
           )
         })}
       </>

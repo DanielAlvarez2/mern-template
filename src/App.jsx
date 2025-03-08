@@ -65,7 +65,7 @@ export default function App(){
           Last Name:
           <input id='last-name' name='lastName' placeholder='Smith' type='text' />
         </label>
-        <button style={ editForm ? { background:'blue'} : {background:'black',color:'white'}}>
+        <button style={ editForm ? { background:'blue'} : {background:'black'}}>
           {editForm ? <><VscSave /> Save Changes</> : <><FaPlusCircle /> Add Name</>}
         </button>      
       </form>
