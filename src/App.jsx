@@ -63,7 +63,7 @@ export default function App(){
           <input id='last-name' name='lastName' placeholder='Smith' type='text' />
         </label>
         <input  type='submit' 
-                value={ editForm ? 'Δ Update Name' : '+ Add Name'} 
+                value={ editForm ? 'Δ Save Changes' : '+ Add Name'} 
                 style={ editForm ? { background:'blue'} : {background:'black'}}        
         />
       </form>
