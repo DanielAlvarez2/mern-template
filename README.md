@@ -102,6 +102,8 @@ ctrl+c both servers
 restart both servers (express 1st)  
 ensure new port# being used  
 /package.json: "start":"cd server && node server.js"  
+update README.md  
+index.html: <title>NEW TITLE</title>  
 Push to GitHub  
 
 Render.com:  
