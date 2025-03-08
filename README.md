@@ -326,7 +326,7 @@ git push
     return(
       <>
         <form action={editFrom ? updateName : addName}>
-          <input type='hidden' id='id' name='id' value={hiddenId} />
+          <input type='hidden' id='id' name='id' value={hiddenID} />
           <label>
             First Name:
             <input id='first-name' name='firstName' placeholder='John' type='text' />
