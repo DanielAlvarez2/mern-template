@@ -296,7 +296,7 @@ git push
       await fetch('/api/names'),{ method:'POST,
                                   headers:{'Content-Type':'application/json'},
                                   body: JSON.stringify({
-                                    firstName: formData.get('firstName',
+                                    firstName: formData.get('firstName'),
                                     lastName: formData.get('lastName')
                                     )}
             )}
