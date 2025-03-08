@@ -142,6 +142,7 @@ use database called 'names' for initial setup
 /server$ cd models  
 /server/models$ touch Name.js
 
+
 /server/models/Name.js:  
 ```js
     import mongoose from 'mongoose'
@@ -174,7 +175,8 @@ MUST HAVE A SEMICOLON BEFORE NEXT LINE OF CODE!!!(IIFE)
                 firstName:req.body.firstName,
                 lastName:req.body.lastName
             })
-            res.json('Added to Database')
+            console.loG('Added to Database: ___)
+            res.json('Added to Database: ___')
         }catch(err){
             console.log(err)
         }
@@ -197,7 +199,8 @@ server/server.js:
   app.delete('/api/names/:id',async(req,res)=>{
     try{
       await Name.findByIdAndDelete(req.params.id)
-      res.json(console.log('Deleted from Database'))
+      console.log('Deleted from Database: ___')
+      res.json('Deleted from Database: ___'))
     }catch(err){
       console.log(err)
     }
