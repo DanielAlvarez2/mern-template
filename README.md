@@ -147,6 +147,7 @@ use database called 'names' for initial setup
 /server$ cd models  
 /server/models$ touch Name.js
 
+---
 
 /server/models/Name.js:  
 ```js
