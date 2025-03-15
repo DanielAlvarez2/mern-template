@@ -1,3 +1,5 @@
+Will Take About 1 - 1.5 hours  
+---
 GitHub:  
  Your repositories  
  Click Green Button: 'New'  
