@@ -155,7 +155,6 @@ use database called 'names' for initial setup
     const NameSchema = new mongoose.Schema({
         firstName:{type:String},
         lastName:{type:String}
-
     },{timestamps:true})
     export default mongoose.model('Name', NameSchema)
 ```
