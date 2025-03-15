@@ -65,6 +65,7 @@ export default defineConfig({
 })
  ```
  
+ ---
 
  App.jsx (REPLACE ENTIRE FILE CONTENTS): 
 ```js
