@@ -268,6 +268,7 @@ server/server.js:
 ```
 copy 1 id# to clipboard  
 Postman: PUT http://localhost:7071/(cmd+v/paste)  
+modify name  
 click: 'Send'  
 confirm entry updated in mongodb.com  
 git push  
