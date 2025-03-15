@@ -159,6 +159,8 @@ use database called 'names' for initial setup
     export default mongoose.model('Name', NameSchema)
 ```
 
+---
+
 /server/server.js: import Name from './models/Name.js'  
 
 /server/server.js:  
