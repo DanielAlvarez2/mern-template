@@ -55,7 +55,7 @@ app.get('/api/items',(req,res)=>res.send(items))
 
 ---
 
- vite.config.js:
+### vite.config.js:
  ```js
 export default defineConfig({
   server:{
@@ -69,7 +69,7 @@ export default defineConfig({
  
  ---
 
- App.jsx (REPLACE ENTIRE FILE CONTENTS): 
+ ### App.jsx (REPLACE ENTIRE FILE CONTENTS): 
 ```js
 import { useState, useEffect } from 'react'
 export default function App() {
@@ -113,7 +113,7 @@ Push to GitHub
 
 ---
 
-Render.com:  
+### Render.com:  
  Push Button '+ New'  
  Select 'Web Service'  
  Select GitHub Repo from Dropdown Menu  
@@ -151,7 +151,7 @@ use database called 'names' for initial setup
 
 ---
 
-/server/models/Name.js:  
+### /server/models/Name.js:  
 ```js
     import mongoose from 'mongoose'
     const NameSchema = new mongoose.Schema({
@@ -163,9 +163,10 @@ use database called 'names' for initial setup
 
 ---
 
-/server/server.js: import Name from './models/Name.js'  
 
-/server/server.js:  
+### /server/server.js:  
+import Name from './models/Name.js'  
+
 MUST HAVE A SEMICOLON BEFORE NEXT LINE OF CODE!!!(IIFE)  
 ```js
     (async()=>{
@@ -201,7 +202,7 @@ Body > raw
 click: 'Send'  
 Confirm new entry on mongodb.com  
 
-server/server.js:  
+### server/server.js:  
 ```js
   app.delete('/api/names/:id',async(req,res)=>{
     try{
@@ -221,7 +222,7 @@ click: 'Send'
 confirm entry deleted on mongodb.com  
 Postman: add 3 entries to database  
 
-server/server.js:  
+### server/server.js:  
 ```js
   app.get('/api/names', async(req,res=>{
     try{
@@ -237,7 +238,7 @@ Postman: GET http://localhost:7071/api/names
 click: 'Send'  
 confirm response of all names from database  
 
-server/server.js:  
+### server/server.js:  
 ```js
   app.get('/api/names/:id', async(req,res)=>{
     try{
@@ -254,7 +255,7 @@ Postman: GET http://localhost:7071/(cmd+v/paste)
 click: 'Send'  
 confirm response of ONE entry from database  
 
-server/server.js:  
+### server/server.js:  
 ```js
   app.put('/api/names/:id',async(req,res)=>{
     try{
