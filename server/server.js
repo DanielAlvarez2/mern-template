@@ -67,4 +67,3 @@ app.put('/api/names/:id',async(req,res)=>{
     }
 })
 app.get('/api/items',(req,res)=>res.send(items))
-setInterval(()=>fetch('https://mern-template-pj2l.onrender.com'),600000)
