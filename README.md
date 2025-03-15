@@ -188,7 +188,7 @@ MUST HAVE A SEMICOLON BEFORE NEXT LINE OF CODE!!!(IIFE)
     })
 ```
 server/server.js: app.use(express.json())  
-
+run both servers  
 Postman:  
 POST http://localhost:7071/api/names/  
 Body > raw  
