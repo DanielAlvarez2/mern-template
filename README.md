@@ -93,8 +93,7 @@ export default function App() {
   )
 }
 ```
-add another 2 bash terminals, rename 1 express / 2 react / 3 git  
-express$ cd server  
+add another 2 bash terminals, rename 1 express / 2 react / 3 git    
 express/server$ node --watch --env-file=../.env server.js (start express before react)  
 react$ npm run dev  
 click link to open browser  
