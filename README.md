@@ -103,6 +103,7 @@ ctrl+c both servers
 .vite.config.js: change PORT to 8081 (port# from above)  
 restart both servers (express 1st)  
 ensure new port# being used  
+change h1 to ensure hot-reloading is working  
 /package.json: "start":"cd server && node server.js"  
 update README.md  
 index.html: <title>NEW TITLE</title>  
