@@ -240,7 +240,7 @@ server/server.js:
   app.get('/api/names/:id', async(req,res)=>{
     try{
       const name = await Name.findById(req.params.id)
-      console.log('1 Wine from Database: ___')
+      console.log('1 Name from Database: ___')
       res.json(name)
     }catch(err){
       console.log(err)
