@@ -14,7 +14,7 @@ VS Code:
  Open newly created folder  
  $ git config user.name 'Daniel Alvarez'  
  $ git config user.email 'daniel.yllanes@hotmail.com'  
- $ npm create vite@ latest .  (PERIOD='in current directory')
+ $ npm create vite@ latest .  (PERIOD='in current directory')  
  ● React  
  ● JavaScript  
  $ npm i  
