@@ -223,7 +223,7 @@ server/server.js:
 ```js
   app.get('/api/names', async(req,res=>{
     try{
-      const allNames = await.find()
+      const allNames = await Name.find()
       console.log('All Names From Database: ___')
       res.json(allNames)
     }catch(err){
