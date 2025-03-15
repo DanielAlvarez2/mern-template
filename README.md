@@ -156,9 +156,7 @@ use database called 'names' for initial setup
         firstName:{type:String},
         lastName:{type:String}
 
-    },{
-        timestamps:true
-    })
+    },{timestamps:true})
     export default mongoose.model('Name', NameSchema)
 ```
 
