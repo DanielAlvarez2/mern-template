@@ -260,7 +260,7 @@ server/server.js:
         firstName:req.body.firstName,
         lastName:req.body.lastName
       })
-      res.json('Updated in Database')
+      res.json('Updated in Database: ___')
     }catch(err){
       console.log(err)
     }
