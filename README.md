@@ -365,12 +365,14 @@ export default function App(){
 ensure list of names is displaying in React Browser  
 index.html <head>:  
 <script src="https://kit.fontawesome.com/21ef82ed30.js" crossorigin="anonymous"></script>  
-git push (READ/DELETE working)  
+git push (CRUD working)  
 Render.com dashboard: Overview > Projects  
 Click on 'SERVICE NAME'  
 MANAGE > Environment  > Environment Variables > '+ Add' > '+ New Variable'  
 .env: copy MONGODB_URI environment variable  
 Render.com: 'Key' MONGODB_URI 'Value' (cmd+v/paste) 'Save, rebuild, and deploy'   
+MONITOR > Logs > Maximize  
+Wait for 'your service is live'  
 confirm list of names displaying online 
   
 
