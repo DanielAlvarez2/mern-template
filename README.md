@@ -23,7 +23,7 @@ VS Code:
  $ touch .env  
  .gitignore: add '.env'  
  DO NOT DELETE 'src/assets/react.svg' FILE / WILL THROW AN ERROR  
- Delete /public  
+ Delete /public/vite.svg  
  Delete src/App.css  
  src/App.jsx: delete all imports except for useState  
  src/App.jsx: delete everything in function and replace with 'test'  
