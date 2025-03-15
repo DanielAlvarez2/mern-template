@@ -229,7 +229,7 @@ server/server.js:
     }catch(err){
       console.log(err)
     }
-  }))
+  })
 ```
 Postman: GET http://localhost:7071/api/names  
 click: 'Send'  
